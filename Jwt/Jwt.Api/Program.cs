@@ -1,7 +1,6 @@
 using Jwt.Api.Data.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -19,8 +18,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 #if DEBUG
     .EnableSensitiveDataLogging()
 #endif
-    .UseNpgsql(builder.Configuration.GetConnectionString(nameof(ApplicationDbContext)),
-    b => b.MigrationsAssembly("CleanMovie.Api"))
+    .UseNpgsql(builder.Configuration.GetConnectionString(nameof(ApplicationDbContext)))
 );
 
 //JWT Configuration

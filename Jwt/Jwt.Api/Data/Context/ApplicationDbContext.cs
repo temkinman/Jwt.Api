@@ -10,9 +10,11 @@ namespace Jwt.Api.Data.Context
 
         public DbSet<User> Users { get; set; }
 
-        protected override void OnModelCreating()
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.Entity<User>().HasData(
+                new User { Id = 1, UserName = "admin", Password = "admin" }
+            );
         }
 
     }
